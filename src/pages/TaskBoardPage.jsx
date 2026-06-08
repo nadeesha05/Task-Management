@@ -1,3 +1,4 @@
+import Navbar from '../components/Navbar'
 import { useState } from 'react'
 import { Box, Typography, Paper, Chip } from '@mui/material'
 
@@ -59,7 +60,7 @@ function TaskBoardPage() {
 
   return (
     <Box sx={{ p: 4, backgroundColor: '#f0f2f5', minHeight: '100vh' }}>
-
+<Navbar />
       <Typography variant="h4" sx={{ mb: 4, fontWeight: 'bold', color: '#1976d2' }}>
         Task Board
       </Typography>

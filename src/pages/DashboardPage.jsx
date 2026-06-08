@@ -1,3 +1,4 @@
+import Navbar from '../components/Navbar'
 import { Box, Grid, Paper, Typography } from '@mui/material'
 import AssignmentIcon from '@mui/icons-material/Assignment'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
@@ -7,7 +8,7 @@ import PeopleIcon from '@mui/icons-material/People'
 function DashboardPage() {
   return (
     <Box sx={{ p: 4, backgroundColor: '#f0f2f5', minHeight: '100vh' }}>
-
+<Navbar />
       <Typography variant="h4" sx={{ mb: 4, fontWeight: 'bold', color: '#1976d2' }}>
         Dashboard
       </Typography>
