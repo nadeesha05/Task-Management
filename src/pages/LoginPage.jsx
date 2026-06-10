@@ -36,9 +36,10 @@ function LoginPage() {
     setError('')
     setLoading(true)
     setTimeout(() => {
-      setLoading(false)
-      navigate('/dashboard')
-    }, 1500)
+  setLoading(false)
+  localStorage.setItem('token', 'demo-token')  // ← add this line only
+  navigate('/dashboard')
+}, 1500)
   }
 
   return (

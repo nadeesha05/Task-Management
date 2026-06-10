@@ -131,7 +131,7 @@ function Sidebar({ expanded, setExpanded }) {
           </Box>
         )}
         <Tooltip title={!expanded ? 'Logout' : ''} placement="right">
-          <Box onClick={() => navigate('/')} sx={{
+          <Box onClick={() => { localStorage.removeItem('token'); navigate('/') }} sx={{
             display: 'flex', alignItems: 'center', gap: 2,
             px: expanded ? 2 : 0, py: 1.3, borderRadius: 2,
             cursor: 'pointer', justifyContent: expanded ? 'flex-start' : 'center',
