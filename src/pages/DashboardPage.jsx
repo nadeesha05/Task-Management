@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout'
 import { Box, Typography, Grid, Paper, LinearProgress, Chip, Avatar } from '@mui/material'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
@@ -7,10 +8,10 @@ import PendingIcon from '@mui/icons-material/Pending'
 import PeopleIcon from '@mui/icons-material/People'
 
 const stats = [
-  { label: 'Total Tasks', value: 12, icon: <AssignmentIcon sx={{ fontSize: 28 }} />, color: '#a78bfa', bg: 'rgba(167,139,250,0.15)' },
-  { label: 'In Progress', value: 5, icon: <PendingIcon sx={{ fontSize: 28 }} />, color: '#fbbf24', bg: 'rgba(251,191,36,0.15)' },
-  { label: 'Completed', value: 7, icon: <CheckCircleIcon sx={{ fontSize: 28 }} />, color: '#34d399', bg: 'rgba(52,211,153,0.15)' },
-  { label: 'Team Members', value: 4, icon: <PeopleIcon sx={{ fontSize: 28 }} />, color: '#60a5fa', bg: 'rgba(96,165,250,0.15)' },
+  { label: 'Total Tasks', value: 12, icon: <AssignmentIcon sx={{ fontSize: 28 }} />, color: '#a78bfa', bg: 'rgba(167,139,250,0.15)', path: '/taskboard' },
+  { label: 'In Progress', value: 5, icon: <PendingIcon sx={{ fontSize: 28 }} />, color: '#fbbf24', bg: 'rgba(251,191,36,0.15)', path: '/taskboard' },
+  { label: 'Completed', value: 7, icon: <CheckCircleIcon sx={{ fontSize: 28 }} />, color: '#34d399', bg: 'rgba(52,211,153,0.15)', path: '/taskboard' },
+  { label: 'Team Members', value: 4, icon: <PeopleIcon sx={{ fontSize: 28 }} />, color: '#60a5fa', bg: 'rgba(96,165,250,0.15)', path: '/users' },
 ]
 
 const recentTasks = [
@@ -34,6 +35,8 @@ const statusColors = {
 }
 
 function DashboardPage() {
+  const navigate = useNavigate()
+
   return (
     <Layout>
       <Box sx={{ p: 4, backgroundColor: '#0f1117', minHeight: '100vh' }}>
@@ -51,11 +54,12 @@ function DashboardPage() {
         <Grid container spacing={3} sx={{ mb: 4 }}>
           {stats.map((stat) => (
             <Grid item xs={12} sm={6} md={3} key={stat.label}>
-              <Paper elevation={0} sx={{
+              <Paper elevation={0} onClick={() => navigate(stat.path)} sx={{
                 p: 3, borderRadius: 3,
                 background: 'linear-gradient(145deg, #1e2235, #1a1d2e)',
                 border: '1px solid rgba(255,255,255,0.08)',
                 display: 'flex', alignItems: 'center', gap: 2.5,
+                cursor: 'pointer',
                 transition: 'all 0.25s',
                 '&:hover': {
                   border: `1px solid ${stat.color}60`,
@@ -144,7 +148,7 @@ function DashboardPage() {
                 <Typography variant="h6" fontWeight="bold" sx={{ color: '#f1f5f9' }}>
                   Recent Tasks
                 </Typography>
-                <Typography variant="body2" sx={{
+                <Typography variant="body2" onClick={() => navigate('/taskboard')} sx={{
                   color: '#a78bfa', cursor: 'pointer', fontWeight: 500,
                   '&:hover': { textDecoration: 'underline' }
                 }}>
